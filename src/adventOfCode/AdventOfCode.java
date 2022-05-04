@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 public class AdventOfCode {
     public static void main(String[] args) throws FileNotFoundException {
-        boolean runAll = false;
-        int workingOnDay = 1;
+        boolean runAll = true;
+        int workingOnDay = 2;
 
         // ArrayList of days
         ArrayList<PuzzleDay> days = new ArrayList<>();
@@ -25,41 +25,28 @@ public class AdventOfCode {
 
     private static void printAllResults(ArrayList<PuzzleDay> days) throws FileNotFoundException {
         for (int i = 0; i < days.size(); i++) {
-            PuzzleDay currentDay = days.get(i);
-
-            if (currentDay.isPartOneSolved() || currentDay.isPartTwoSolved()) {
-                ArrayList<String> puzzleInput = PuzzleScanner.getPuzzleInput(i + 1, currentDay.getUseTestInput());
-                System.out.println("Result for Day " + i);
-
-                if (currentDay.isPartOneSolved()) {
-                    System.out.printf("Part one:" +
-                            "\nThe solution is: %d%n", currentDay.getSolutionPartOne(puzzleInput));
-                }
-
-                if (currentDay.isPartOneSolved()) {
-                    System.out.printf("Part two:" +
-                            "\nThe solution is: %d%n", currentDay.getSolutionPartTwo(puzzleInput));
-                }
-            }
+            int currentDay = i + 1;
+            printResultsOfDay(days, currentDay);
         }
     }
 
     private static void printResultsOfDay(ArrayList<PuzzleDay> days, int workingDay) throws FileNotFoundException {
         PuzzleDay currentDay = days.get(workingDay - 1);
-        ArrayList<String> puzzleInput = PuzzleScanner.getPuzzleInput(workingDay, currentDay.getUseTestInput());
 
         if (currentDay.isPartOneSolved() || currentDay.isPartTwoSolved()) {
-            System.out.println("Result for Day " + workingDay);
+            System.out.println("\u001B[1mResult for Day " + workingDay + "\u001B[0m");
 
+            ArrayList<String> puzzleInput = PuzzleScanner.getPuzzleInput(workingDay, currentDay.getUseTestInput());
             if (currentDay.isPartOneSolved()) {
-                System.out.printf("Part one:" +
-                        "\nThe solution is: %d%n", currentDay.getSolutionPartOne(puzzleInput));
+                System.out.printf("Part one: " +
+                        "the solution is %d%n", currentDay.getSolutionPartOne(puzzleInput));
             }
 
             if (currentDay.isPartOneSolved()) {
-                System.out.printf("Part two:" +
-                        "\nThe solution is: %d%n", currentDay.getSolutionPartTwo(puzzleInput));
+                System.out.printf("Part two: " +
+                        "the solution is %d%n", currentDay.getSolutionPartTwo(puzzleInput));
             }
+            System.out.println("------");
         }
     }
 }
