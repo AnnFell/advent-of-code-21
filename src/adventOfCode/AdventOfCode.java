@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class AdventOfCode {
     public static void main(String[] args) throws FileNotFoundException {
         boolean runAll = true;
-        int workingOnDay = 2;
+        int workingOnDay = 3;
 
         // ArrayList of days
         ArrayList<PuzzleDay> days = new ArrayList<>();
@@ -42,7 +42,7 @@ public class AdventOfCode {
                         "the solution is %d%n", currentDay.getSolutionPartOne(puzzleInput));
             }
 
-            if (currentDay.isPartOneSolved()) {
+            if (currentDay.isPartTwoSolved()) {
                 System.out.printf("Part two: " +
                         "the solution is %d%n", currentDay.getSolutionPartTwo(puzzleInput));
             }
