@@ -3,10 +3,11 @@ package adventOfCode;
 import utils.InputParser;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Day03 extends PuzzleDay {
     private boolean partOneSolved = true;
-    private boolean partTwoSolved;
+    private boolean partTwoSolved = true;
     private boolean useTestInput;
 
     @Override
@@ -64,6 +65,62 @@ public class Day03 extends PuzzleDay {
 
     @Override
     public long getSolutionPartTwo(ArrayList<String> input) {
-        return 0;
+        ArrayList<int[]> diagnostics = InputParser.inputToListOfIntArrays(input);
+
+        int[] oxygenGeneratorArray = filterMyList(diagnostics, 0, true);
+        int[] co2ScrubberArray = filterMyList(diagnostics, 0, false);
+
+        // convert array to string
+        StringBuilder oxy = new StringBuilder();
+        for (int value : oxygenGeneratorArray) {
+            oxy.append(value);
+        }
+        StringBuilder co2 = new StringBuilder();
+        for (int value : co2ScrubberArray) {
+            co2.append(value);
+        }
+
+        // convert binary string to value
+        long oxygenGeneratorValue = Long.parseLong(oxy.toString(), 2);
+        long co2ScrubberValue = Long.parseLong(co2.toString(), 2);
+
+        return oxygenGeneratorValue * co2ScrubberValue;
+    }
+
+    private int[] filterMyList(ArrayList<int[]> input, int index, boolean greaterThan) {
+        // find most common value in column corresponding to index
+        int count1 = 0;
+        int count0 = 0;
+        for (int[] dataLine : input) {
+            if (dataLine[index] == 1) {
+                count1++;
+            } else {
+                count0++;
+            }
+        }
+
+        // use value to determine filter
+        int filter;
+        if (greaterThan) {
+            filter = count1 >= count0 ? 1 : 0;
+        } else {
+            filter = count1 < count0 ? 1 : 0;
+        }
+
+        // keep only the arrays that have filter value at index
+        ArrayList<int[]> filteredList = new ArrayList<>();
+        for (int[] dataLine : input) {
+            if (dataLine[index] == filter) {
+                filteredList.add(dataLine);
+            }
+        }
+
+        // repeat process until only one value remains
+        if (filteredList.size() > 1) {
+            int newIndex = index + 1;
+            return filterMyList(filteredList, newIndex, greaterThan);
+        } else {
+            return filteredList.get(0);
+        }
     }
 }
