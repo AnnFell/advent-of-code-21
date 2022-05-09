@@ -5,23 +5,10 @@ import utils.InputParser;
 import java.util.ArrayList;
 
 public class Day01 extends PuzzleDay {
-    private boolean partOneSolved = true;
-    private boolean partTwoSolved = true;
-    private boolean useTestInput;
 
-    @Override
-    public boolean isPartOneSolved() {
-        return partOneSolved;
-    }
-
-    @Override
-    public boolean isPartTwoSolved() {
-        return partTwoSolved;
-    }
-
-    @Override
-    boolean getUseTestInput() {
-        return useTestInput;
+    public Day01() {
+        setPartOneSolved(true);
+        setPartTwoSolved(true);
     }
 
     @Override
@@ -55,7 +42,6 @@ public class Day01 extends PuzzleDay {
                 increases++;
             }
         }
-
         return increases;
     }
 }

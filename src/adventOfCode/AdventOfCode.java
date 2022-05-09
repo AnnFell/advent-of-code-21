@@ -8,13 +8,15 @@ import java.util.ArrayList;
 public class AdventOfCode {
     public static void main(String[] args) throws FileNotFoundException {
         boolean runAll = true;
-        int workingOnDay = 3;
+        int workingOnDay = 4;
 
         // ArrayList of days
         ArrayList<PuzzleDay> days = new ArrayList<>();
         days.add(new Day01());
         days.add(new Day02());
         days.add(new Day03());
+        days.add(new Day04());
+        days.add(new Day05());
 
         if (runAll) {
             printAllResults(days);

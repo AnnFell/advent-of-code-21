@@ -6,23 +6,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Day03 extends PuzzleDay {
-    private boolean partOneSolved = true;
-    private boolean partTwoSolved = true;
-    private boolean useTestInput;
-
-    @Override
-    public boolean isPartOneSolved() {
-        return partOneSolved;
-    }
-
-    @Override
-    public boolean isPartTwoSolved() {
-        return partTwoSolved;
-    }
-
-    @Override
-    boolean getUseTestInput() {
-        return useTestInput;
+    public Day03() {
+        setPartOneSolved(true);
+        setPartTwoSolved(true);
     }
 
     @Override

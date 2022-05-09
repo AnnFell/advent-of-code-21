@@ -3,23 +3,9 @@ package adventOfCode;
 import java.util.ArrayList;
 
 public class Day02 extends PuzzleDay {
-    private boolean partOneSolved = true;
-    private boolean partTwoSolved = true;
-    private boolean useTestInput;
-
-    @Override
-    public boolean isPartOneSolved() {
-        return partOneSolved;
-    }
-
-    @Override
-    public boolean isPartTwoSolved() {
-        return partTwoSolved;
-    }
-
-    @Override
-    boolean getUseTestInput() {
-        return useTestInput;
+    public Day02(){
+        setPartOneSolved(true);
+        setPartTwoSolved(true);
     }
 
     @Override

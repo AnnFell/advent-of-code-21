@@ -3,11 +3,33 @@ package adventOfCode;
 import java.util.ArrayList;
 
 public abstract class PuzzleDay {
-    abstract boolean isPartOneSolved();
+    private boolean partOneSolved;
+    private boolean partTwoSolved;
+    private boolean useTestInput;
 
-    abstract boolean isPartTwoSolved();
+    protected boolean isPartOneSolved() {
+        return partOneSolved;
+    }
 
-    abstract boolean getUseTestInput();
+    protected void setPartOneSolved(boolean partOneSolved) {
+        this.partOneSolved = partOneSolved;
+    }
+
+    protected boolean isPartTwoSolved() {
+        return partTwoSolved;
+    }
+
+    protected void setPartTwoSolved(boolean partTwoSolved) {
+        this.partTwoSolved = partTwoSolved;
+    }
+
+    protected boolean getUseTestInput() {
+        return useTestInput;
+    }
+
+    protected void setUseTestInput(boolean useTestInput) {
+        this.useTestInput = useTestInput;
+    }
 
     abstract long getSolutionPartOne(ArrayList<String> input);
 
